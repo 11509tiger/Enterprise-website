@@ -28,14 +28,14 @@ header {
   height: 80px;
   display: grid;
   padding: 0 40px;
-
   grid-template-columns: 1fr 2fr;
   align-items: center;
-  position: relative;
+  position: absolute;
+  top: 0;
   z-index: 200;
 }
 
-.logo {
+header .logo {
   font-size: 24px;
   font-weight: 600;
   color: var(--text-color-lightest);
@@ -45,17 +45,18 @@ header nav {
   justify-self: end;
 }
 
-header nav i {
+header .nav i {
   color: var(--text-color-lightest);
 }
 
-header nav a {
+header .nav a {
   color: var(--text-color-lightest);
   text-decoration: none;
   margin: 0 24px;
+  position: relative;
 }
 
-header nav a.active::after {
+header .nav a.active::after {
   display: block;
   content: "";
   height: 4px;
@@ -75,9 +76,9 @@ header nav a.active::after {
     width: 100%;
   }
 }
-header nav a.active,
-header nav a:hover,
-header nav a:active{
+header .nav a.active,
+header .nav a:hover,
+header .nav a:active{
   color: var(--primary-color);
 }
 
@@ -92,20 +93,20 @@ header.sticky{
   animation: dropDown 0.5s ease-in-out forwards;  /* 动画执行完后保留在最后一帧 */
 }
 
-header.sticky .logo,
-header.sticky nav a,
-header.sticky nav i {
-  color: var(--text-color-darker);
-}
-
 /* 向下划的效果 */
 @keyframes dropDown {
   from {
-    transform: translateY(-100px);
+    transform: translateY(-100%);
   }
   to {
     transform: translateY(0);
   }
+}
+
+header.sticky .logo,
+header.sticky nav a,
+header.sticky nav i {
+  color: var(--text-color-darker);
 }
 
 .glide {
